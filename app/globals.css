@@ -1,0 +1,312 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables CSS */
+:root {
+  --primary-blue: #2563eb;
+  --primary-blue-dark: #1d4ed8;
+  --secondary-green: #059669;
+  --accent-purple: #7c3aed;
+  --warning-yellow: #d97706;
+  --danger-red: #dc2626;
+  --success-green: #16a34a;
+  --gray-light: #f8fafc;
+  --gray-medium: #64748b;
+  --gray-dark: #1e293b;
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--gray-dark);
+  background-color: var(--gray-light);
+}
+
+/* ===== ANIMACIONES ESENCIALES ===== */
+
+/* Animación de entrada principal */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Clases de animación */
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-pulse-slow {
+  animation: pulse 2s infinite;
+}
+
+/* ===== EFECTOS HOVER ESENCIALES ===== */
+
+/* Botones */
+.btn-hover-effect {
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.btn-hover-effect:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-hover-effect:active {
+  transform: translateY(0);
+}
+
+/* Cards */
+.card-hover-effect {
+  transition: all 0.3s ease;
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-blue);
+}
+
+/* Inputs */
+.input-focus-effect:focus {
+  transform: scale(1.01);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  border-color: var(--primary-blue);
+}
+
+/* Sidebar items */
+.sidebar-item-effect {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.sidebar-item-effect::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: var(--primary-blue);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.sidebar-item-effect:hover::before,
+.sidebar-item-effect.active::before {
+  transform: scaleY(1);
+}
+
+.sidebar-item-effect:hover {
+  background: rgba(37, 99, 235, 0.1);
+  transform: translateX(5px);
+}
+
+/* Iconos */
+.icon-hover-effect {
+  transition: all 0.3s ease;
+}
+
+.icon-hover-effect:hover {
+  transform: scale(1.1);
+  color: var(--primary-blue);
+}
+
+/* Fotos de perfil */
+.profile-photo-effect {
+  transition: all 0.3s ease;
+}
+
+.profile-photo-effect:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+}
+
+/* Estadísticas */
+.stat-card-effect {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.stat-card-effect:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card-effect:hover .stat-number {
+  color: var(--primary-blue);
+  transform: scale(1.1);
+}
+
+.stat-number {
+  transition: all 0.3s ease;
+}
+
+/* Links */
+.link-hover-effect {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.link-hover-effect::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-blue);
+  transition: width 0.3s ease;
+}
+
+.link-hover-effect:hover::after {
+  width: 100%;
+}
+
+.link-hover-effect:hover {
+  color: var(--primary-blue);
+}
+
+/* Lista items */
+.list-item-effect {
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.list-item-effect:hover {
+  background: rgba(37, 99, 235, 0.05);
+  border-left-color: var(--primary-blue);
+  transform: translateX(5px);
+}
+
+/* Badges */
+.badge-hover-effect {
+  transition: all 0.2s ease;
+}
+
+.badge-hover-effect:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Focus ring */
+.focus-ring:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+  border-radius: 8px;
+}
+
+/* Header effect */
+.header-effect {
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.header-effect:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== ESTILOS BÁSICOS ===== */
+
+/* Estados de citas */
+.estado-pendiente {
+  background-color: #fef3c7;
+  color: #92400e;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.estado-confirmada {
+  background-color: #dbeafe;
+  color: #1e40af;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.estado-cancelada {
+  background-color: #fecaca;
+  color: #991b1b;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.estado-completada {
+  background-color: #dcfce7;
+  color: #166534;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-blue);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-blue-dark);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card-hover-effect:hover,
+  .btn-hover-effect:hover,
+  .sidebar-item-effect:hover {
+    transform: none;
+  }
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
